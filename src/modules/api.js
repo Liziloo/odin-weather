@@ -44,7 +44,7 @@ const getWeather = async (location) => {
         todayDescripDiv.textContent = todayDescription;
 
         const conditionImg = document.createElement('img');
-        conditionImg.src = conditions[currentDescription];
+        conditionImg.src = conditions[currentDescription.toLowerCase()];
         imgDiv.appendChild(conditionImg);
     } catch(e) {
         console.error(e.message);
