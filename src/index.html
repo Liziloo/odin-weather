@@ -5,25 +5,29 @@
         <title>Webpack App</title>
     </head>
     <body>
-        <div>
-            <label for="location">Your location:</label>
-            <input type="text" id="location">
-            <button class="submit">Get my weather</button>
-        </div>
-        <div class="weather-display">
-            <div class="location"></div>
-            <div class="now">
-                <h2>Right Now</h2>
-                <div class="img">
-                    <img class="condition-image" src="./images/sunny.png">
-                </div>
-                <div class="description"></div>
+        <div class="container">
+            <div>
+                <label for="location">Your location:</label>
+                <input type="text" id="location">
+                <button class="submit">Get my weather</button>
             </div>
-            <div class="today">
-                <h2>Today</h2>
-                <div class="today-description"></div>
-                <div class="low temp"></div>
-                <div class="high temp"></div>
+            <div class="weather-display">
+                <div class="location"></div>
+                <div class="times">
+                    <div class="now">
+                        <h2>Right Now</h2>
+                        <div class="img">
+                            <img class="condition-image" src="./images/sunny.png">
+                        </div>
+                        <div class="description"></div>
+                    </div>
+                    <div class="today">
+                        <h2>Today</h2>
+                        <div class="today-description"></div>
+                        <div class="low temp"></div>
+                        <div class="high temp"></div>
+                    </div>
+                </div>
             </div>
         </div>
     </body>
