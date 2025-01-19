@@ -11,6 +11,12 @@ button {
 
 .location {
     margin: 10px 0;
+    text-align: center;
+}
+
+.now {
+    display: grid;
+    justify-content: center;
 }
 
 .times {
