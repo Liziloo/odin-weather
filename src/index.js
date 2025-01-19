@@ -1,6 +1,14 @@
 import './styles/comeau-reset.css';
 import './styles/styles.css';
 
+const submitButton = document.querySelector('.submit');
+submitButton.addEventListener('click', (e) => {clickHandler(e)});
+
+const clickHandler = (e) => {
+    e.preventDefault();
+    const location = document.querySelector('#location').value;
+    getWeather(location);
+}
 
 const getWeather = async (location) => {
     const url = `https://weather.visualcrossing.com/VisualCrossingWebServices/rest/services/timeline/${location}?key=TQUULW4UST7ES7XPHWB4N2T5F`;
@@ -21,5 +29,3 @@ const getWeather = async (location) => {
     }
     
 }
-
-getWeather(45231);
