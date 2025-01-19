@@ -1,6 +1,12 @@
 import './styles/comeau-reset.css';
 import './styles/styles.css';
 
+const imgDiv = document.querySelector('.img');
+const descripDiv = document.querySelector('.description');
+const lowDiv = document.querySelector('.low');
+const highDiv = document.querySelector('.high');
+const todayDescripDiv = document.querySelector('.today-description');
+
 const submitButton = document.querySelector('.submit');
 submitButton.addEventListener('click', (e) => {clickHandler(e)});
 
@@ -8,6 +14,15 @@ const clickHandler = (e) => {
     e.preventDefault();
     const location = document.querySelector('#location').value;
     getWeather(location);
+}
+
+const getUserLocation = async() => {
+    if ('geolocation' in navigator) {
+        navigator.geolocation.getCurrentPosition((position) => {
+            console.log(position);
+            getWeather(`${position.coords.latitude},${position.coords.longitude}`)
+        })
+    }
 }
 
 const getWeather = async (location) => {
@@ -22,10 +37,23 @@ const getWeather = async (location) => {
         const minTemp = weatherData.days[0].tempmin;
         const maxTemp = weatherData.days[0].tempmax;
         const todayDescription = weatherData.days[0].conditions;
-        console.log(weatherData);
-        console.log(currentDescription, minTemp, maxTemp, todayDescription);
+
+        descripDiv.textContent = currentDescription;
+        lowDiv.textContent = minTemp;
+        highDiv.textContent = maxTemp;
+        todayDescripDiv.textContent = todayDescription;
     } catch(e) {
         console.error(e.message);
     }
     
 }
+
+const getRandomLoc = () => {
+    const lat = Math.random() * 180 - 90;
+    const lng = Math.random() * 360 - 180;
+    return `${lat},${lng}`;
+}
+
+getUserLocation().catch(
+    getWeather(getRandomLoc())
+);
