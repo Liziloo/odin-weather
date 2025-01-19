@@ -12,12 +12,14 @@ const conditions = {
     'thunderstorm': thunderstorm,
     'snow': snow,
     'sunny': sunny,
-    'overcast': overcast
+    'overcast': overcast,
+    'partially cloudy': cloudy,
+    'clear': sunny
 }
 
 const getWeather = async (location) => {
     
-    const imgDiv = document.querySelector('.img');
+    const conditionImg = document.querySelector('.condition-image');
     const locationDiv = document.querySelector('.location');
     const descripDiv = document.querySelector('.description');
     const lowDiv = document.querySelector('.low');
@@ -39,13 +41,12 @@ const getWeather = async (location) => {
 
         locationDiv.textContent = `Location: ${retrievedLoc}`;
         descripDiv.textContent = currentDescription;
-        lowDiv.textContent = minTemp;
-        highDiv.textContent = maxTemp;
+        lowDiv.textContent = `Low: ${minTemp}`;
+        highDiv.textContent = `High: ${maxTemp}`;
         todayDescripDiv.textContent = todayDescription;
 
-        const conditionImg = document.createElement('img');
-        conditionImg.src = conditions[currentDescription.toLowerCase()];
-        imgDiv.appendChild(conditionImg);
+        const conditionArray = currentDescription.toLowerCase().split(',');
+        conditionImg.src = conditions[conditionArray[0]];
     } catch(e) {
         console.error(e.message);
     }
