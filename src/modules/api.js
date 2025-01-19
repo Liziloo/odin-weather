@@ -1,5 +1,19 @@
 export { getUserLocation, getWeather };
+import rain from '../images/rain-outline.png';
+import cloudy from '../images/extra-cloudy.png';
+import thunderstorm from '../images/thunder.png';
+import snow from '../images/snow-outline.png';
+import sunny from '../images/sunny.png';
+import overcast from '../images/overcast.png';
 
+const conditions = {
+    'rain': rain,
+    'cloudy': cloudy,
+    'thunderstorm': thunderstorm,
+    'snow': snow,
+    'sunny': sunny,
+    'overcast': overcast
+}
 
 const getWeather = async (location) => {
     
@@ -28,6 +42,10 @@ const getWeather = async (location) => {
         lowDiv.textContent = minTemp;
         highDiv.textContent = maxTemp;
         todayDescripDiv.textContent = todayDescription;
+
+        const conditionImg = document.createElement('img');
+        conditionImg.src = conditions[currentDescription];
+        imgDiv.appendChild(conditionImg);
     } catch(e) {
         console.error(e.message);
     }
